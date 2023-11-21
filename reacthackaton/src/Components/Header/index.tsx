@@ -1,4 +1,4 @@
-import  "./estilo.css"
+import "./estilo.css"
 
 interface PropsHeader {
     // abrirModal: () => void;
@@ -6,12 +6,17 @@ interface PropsHeader {
 
 
 export const Header = (props: PropsHeader) => {
-    return(
-     
+    return (
+
         <header>
-            <h1>Transporte publico</h1>
+
+            <div>
+
+                <h1>Transporte publico</h1>
+                
+            </div>
         </header>
-    
-     
+
+
     )
 }
