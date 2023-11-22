@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { FormContainer, FormGroup, Label, Input, Button, Icon } from './styles';
+import { FormContainer, FormGroup, Label, Input, Button, Icon, InputDate } from './styles';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarker, faUser } from '@fortawesome/free-solid-svg-icons';
+import  './estilo.css'
 // interface PropsHeader {
 //     // abrirModal: () => void;
 // }
@@ -25,21 +26,46 @@ export const Rotas = () => {
             <FormGroup>
                 <Label>Ponto de Partida:</Label>
                 <Input
-                    type="text"
-                /*value={startPoint}
-                onChange={(e) => setStartPoint(e.target.value)}
-                required */
+                type="text"
+                placeholder="Cidade de Partida"
+                
+                // value={startPoint}
+                // onChange={(e) => setStartPoint(e.target.value)}
+                // required
                 />
             </FormGroup>
             <FormGroup>
                 <Label>Ponto de Destino:</Label>
-                <Icon icon={faMapMarker} />
                 <Input
                     type="text"
+                    placeholder="Cidade Destino"
                 // value={endPoint}
                 // onChange={(e) => setEndPoint(e.target.value)}
                 // required
                 />
+
+                <div style={{ display: "flex" }}>
+
+                    <div style={{ marginTop: "10px" }}>
+                        <p>Data Retorno</p>
+                        <InputDate
+                            type="date"
+                        // value={endPoint}
+                        // onChange={(e) => setEndPoint(e.target.value)}
+                        // required
+                        />
+                    </div>
+
+                    <div style={{ marginTop: "10px" }}>
+                        <p>Data Saida</p>
+                        <InputDate
+                            type="date"
+                        // value={endPoint}
+                        // onChange={(e) => setEndPoint(e.target.value)}
+                        // required
+                        />
+                    </div>
+                </div>
             </FormGroup>
             <FormGroup>
                 <Button type="submit">Criar Rota</Button>
