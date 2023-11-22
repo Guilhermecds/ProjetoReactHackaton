@@ -1,6 +1,6 @@
 import { FormEvent, useContext, useEffect, useState } from 'react'
 import Modal from 'react-modal'
-import { TarefaContext } from '../../contexts/tarefaContext';
+import { Button, FormContainer, FormGroup, Input, InputDate, Label } from './style';
 
 
 interface PropsModal {
@@ -8,72 +8,17 @@ interface PropsModal {
     fecharModal: () => void;
 }
 
+
+
+
+
 export function CustomModal(props: PropsModal) {
 
-    const {
-        createTarefa,
-        editarTarefa,
-        funSetTarefaDefault,
-        updateTarefa,
-        deletarTarefa
-    } = useContext(TarefaContext);
-
-    const [titulo, setTitulo] = useState('')
-    const [descricao, setDescricao] = useState('')
-    const [quadro, setQuadro] = useState('quadro1')
-
-    useEffect(() => {
-        if (editarTarefa.editar) {
-
-            setTitulo(editarTarefa.tarefa?.titulo ? editarTarefa.tarefa.titulo : '')
-            setDescricao(editarTarefa.tarefa?.descricao ? editarTarefa.tarefa.descricao : '')
-            setQuadro(editarTarefa.tarefa?.quadro ? editarTarefa.tarefa.quadro : 'quadro1')
-        }
-        console.log('Todos')
-
-    }, [editarTarefa.editar])
 
     function limparCamposEFecharModal() {
-        setTitulo('')
-        setDescricao('')
-        setDescricao('quadro1')
-        funSetTarefaDefault();
         props.fecharModal()
     }
 
-    // onSubmitModal
-    function criarTarefa(event: FormEvent) {
-        event.preventDefault()
-
-        if (editarTarefa.editar && editarTarefa.tarefa) {
-
-            let objTarefa = {
-                ...editarTarefa.tarefa,
-                titulo,
-                descricao,
-                quadro
-            }
-            updateTarefa(objTarefa)
-
-
-        } else {
-            createTarefa({
-                titulo: titulo,
-                descricao,
-                quadro
-            })
-        }
-
-        limparCamposEFecharModal()
-
-    }
-
-    function onClickExcluirTarefa() {
-        if (editarTarefa.tarefa) {
-            deletarTarefa(editarTarefa.tarefa)
-            limparCamposEFecharModal()
-        }
-    }
 
     return (
         <Modal
@@ -90,52 +35,55 @@ export function CustomModal(props: PropsModal) {
                 X
             </button>
 
-            <FormContainer
-                onSubmit={criarTarefa}
-            >
-                <h2>Cadastrar Tarefa</h2>
-
-                <select
-                    value={quadro}
-                    onChange={(val) => setQuadro(val.target.value)}
-                >
-                    <option value="quadro1">Quadro 1</option>
-                    <option value="quadro2">Quadro 2</option>
-                    <option value="quadro3">Quadro 3</option>
-                </select>
-
-                <input
+            <FormContainer /*onSubmit={handleSubmit} */>
+            <FormGroup>
+                <Label>Ponto de Partida:</Label>
+                <Input
+                type="text"
+                placeholder="Cidade de Partida"
+                
+                // value={startPoint}
+                // onChange={(e) => setStartPoint(e.target.value)}
+                // required
+                />
+            </FormGroup>
+            <FormGroup>
+                <Label>Ponto de Destino:</Label>
+                <Input
                     type="text"
-                    placeholder='Título'
-                    required
-                    value={titulo}
-                    onChange={(event) => setTitulo(event.target.value)}
-
-                />
-                <textarea
-                    placeholder='Descriçao'
-                    required
-                    value={descricao}
-                    onChange={(event) => setDescricao(event.target.value)}
+                    placeholder="Cidade Destino"
+                // value={endPoint}
+                // onChange={(e) => setEndPoint(e.target.value)}
+                // required
                 />
 
-                <button type='submit'>
-                    Cadastrar
-                </button>
+                <div style={{ display: "flex" }}>
 
-                {
-                    editarTarefa.editar ?
-                        <button type='button'
-                            onClick={() => {
-                                onClickExcluirTarefa()
-                            }}
-                        >
-                            Excluir
-                        </button>
-                        :
-                        <></>
-                }
-            </FormContainer>
+                    <div style={{ marginTop: "10px" }}>
+                        <p>Data Retorno</p>
+                        <InputDate
+                            type="date"
+                        // value={endPoint}
+                        // onChange={(e) => setEndPoint(e.target.value)}
+                        // required
+                        />
+                    </div>
+
+                    <div style={{ marginTop: "10px" }}>
+                        <p>Data Saida</p>
+                        <InputDate
+                            type="date"
+                        // value={endPoint}
+                        // onChange={(e) => setEndPoint(e.target.value)}
+                        // required
+                        />
+                    </div>
+                </div>
+            </FormGroup>
+            <FormGroup>
+                <Button type="submit">Criar Rota</Button>
+            </FormGroup>
+        </FormContainer>
 
         </Modal>
     )

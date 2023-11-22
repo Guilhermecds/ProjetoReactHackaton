@@ -1,7 +1,7 @@
 import "./estilo.css"
 
 interface PropsHeader {
-    // abrirModal: () => void;
+    abrirModal: () => void;
 }
 
 
@@ -15,6 +15,13 @@ export const Header = (props: PropsHeader) => {
                 <h1>Transporte publico</h1>
                 
             </div>
+
+            <button
+                    type="button"
+                    onClick={props.abrirModal}
+                >
+                    Nova Rota
+                </button>
         </header>
 
 
