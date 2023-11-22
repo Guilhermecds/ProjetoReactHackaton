@@ -9,6 +9,7 @@ export const FormContainer = styled.form`
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff
 `;
 
 export const FormGroup = styled.div`
@@ -26,13 +27,25 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  width: 100%;
+  width: 95%;
   padding: 8px;
-  margin-left: -7px;
+  // margin-left: 5px;
   font-size: 14px;
   border: 2px solid ;
   border-radius: 10px;
 `;
+
+
+export const InputDate = styled.input`
+  margin-top: 10px;
+  width: 170px;
+  padding: 8px;
+  margin-left: 5px;
+  font-size: 14px;
+  border: 2px solid ;
+  border-radius: 10px;
+`;
+
 
 export const Button = styled.button`
   background-color: #007bff;
@@ -52,4 +65,5 @@ export const Icon = styled(FontAwesomeIcon)`
   position: absolute;
   top: 242px;
   color: black;
+  margin-left: 15px;
 `;
