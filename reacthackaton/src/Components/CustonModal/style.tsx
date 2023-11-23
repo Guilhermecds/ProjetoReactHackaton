@@ -128,7 +128,9 @@ export const Button = styled.button`
   border-radius: 15px;
   cursor: pointer;
   &:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
+
+    
   }
 `;
 
@@ -138,3 +140,4 @@ export const Button = styled.button`
 //   color: black;
 //   margin-left: 15px;
 // `;
+
