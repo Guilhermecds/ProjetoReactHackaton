@@ -16,7 +16,7 @@ export const Header = (props: PropsHeader) => {
                 
             </div>
 
-            <button
+            <button id="botaoEsquerdo"
                     type="button"
                     onClick={props.abrirModal}
                 >
