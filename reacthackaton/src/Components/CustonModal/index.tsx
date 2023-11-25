@@ -1,23 +1,48 @@
-import { FormEvent, useContext, useEffect, useState } from 'react'
+import { FormEvent, useContext, useEffect, useRef, useState } from 'react'
 import Modal from 'react-modal'
 import { Button, FormContainer, FormGroup, Input, InputDate, Label } from './style';
+import axios from 'axios';
 
 
 interface PropsModal {
     modalVisible: boolean;
     fecharModal: () => void;
+    // editarTarefa: (data: any) => void;
 }
-
-
-
-
 
 export function CustomModal(props: PropsModal) {
 
+    const [partida, setPartida] = useState('')
+    const [chegada, setChegada] = useState('')
+    const [detalhes, setDetalhes] = useState('')
 
     function limparCamposEFecharModal() {
         props.fecharModal()
     }
+
+
+    function enviarForm(e: any) {
+        e.preventDefault();
+        let objRota = {
+            partida,
+            chegada,
+            detalhes
+        }
+        inserir(objRota)
+    }
+
+    const inserir = (obj: any) => {
+        axios.post('http://localhost:3000/rotas', obj, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then((res) => {
+                limparCamposEFecharModal()
+                window.location.reload()
+            })
+    }
+
 
 
     return (
@@ -35,55 +60,46 @@ export function CustomModal(props: PropsModal) {
                 X
             </button>
 
-            <FormContainer /*onSubmit={handleSubmit} */>
-            <FormGroup>
-                <Label>Ponto de Partida:</Label>
-                <Input
-                type="text"
-                placeholder="Cidade de Partida"
+            <FormContainer
+                onSubmit={(e) => enviarForm(e)}
+            >
+                <FormGroup>
+                    <Label>Ponto de Partida:</Label>
+                    <Input
+                        type="text"
+                        placeholder="Cidade de Partida"
+                        value={partida}
+                        onChange={(e) => setPartida(e.target.value)}
+                        required
+                    />
+                </FormGroup>
+
+                <FormGroup>
+                    <Label>Ponto de Destino:</Label>
+                    <Input
+                        type="text"
+                        placeholder="Cidade Destino"
+                        value={chegada}
+                        onChange={(e) => setChegada(e.target.value)}
+                        required
+                    />
+
+                    <Label>Datlhes da Rota:</Label>
+                    <textarea
+                        placeholder="Cidade Destino"
+                        value={detalhes}
+                        onChange={(e) => setDetalhes(e.target.value)}
+                        required
+                    >
+                        Detalhes
+                    </textarea>
+
+                </FormGroup>
+                <FormGroup>
+                    <Button type="submit">Criar Rota</Button>
+                </FormGroup>
                 
-                // value={startPoint}
-                // onChange={(e) => setStartPoint(e.target.value)}
-                // required
-                />
-            </FormGroup>
-            <FormGroup>
-                <Label>Ponto de Destino:</Label>
-                <Input
-                    type="text"
-                    placeholder="Cidade Destino"
-                // value={endPoint}
-                // onChange={(e) => setEndPoint(e.target.value)}
-                // required
-                />
-
-                <div style={{ display: "flex" }}>
-
-                    <div style={{ marginTop: "10px" }}>
-                        <p>Data Retorno</p>
-                        <InputDate
-                            type="date"
-                        // value={endPoint}
-                        // onChange={(e) => setEndPoint(e.target.value)}
-                        // required
-                        />
-                    </div>
-
-                    <div style={{ marginTop: "10px" }}>
-                        <p>Data Saida</p>
-                        <InputDate
-                            type="date"
-                        // value={endPoint}
-                        // onChange={(e) => setEndPoint(e.target.value)}
-                        // required
-                        />
-                    </div>
-                </div>
-            </FormGroup>
-            <FormGroup>
-                <Button type="submit">Criar Rota</Button>
-            </FormGroup>
-        </FormContainer>
+            </FormContainer>
 
         </Modal>
     )
