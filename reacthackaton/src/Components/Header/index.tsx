@@ -1,28 +1,38 @@
-import "./estilo.css"
+import {
+    BotaoEsquerdo,
+    BotaoDireito,
+    Cabecalho,
+    Titulo
+} from './styles';
+
 
 interface PropsHeader {
     abrirModal: () => void;
+    abrirModalUsuario: () => void; 
 }
 
 
 export const Header = (props: PropsHeader) => {
     return (
 
-        <header>
+        <Cabecalho>
 
             <div>
 
                 <h1>Transporte publico</h1>
                 
             </div>
+            
 
-            <button id="botaoEsquerdo"
-                    type="button"
-                    onClick={props.abrirModal}
-                >
-                    Nova Rota
-                </button>
-        </header>
+            <BotaoDireito onClick={props.abrirModal}>
+              Nova rota
+            </BotaoDireito>
+
+            <BotaoEsquerdo onClick={props.abrirModalUsuario}>
+              Cadastrar Usuario
+            </BotaoEsquerdo>
+
+        </Cabecalho>
 
 
     )

@@ -119,7 +119,7 @@ export const InputDate = styled.input`
 
 
 export const Button = styled.button`
-  background-color: #007bff;
+  backgroundColor: '#00cc00',
   color: #fff;
   margin: 10px auto;
   padding: 15px 100px;
@@ -129,8 +129,6 @@ export const Button = styled.button`
   cursor: pointer;
   &:hover {
   background-color: #0056b3;
-
-    
   }
 `;
 

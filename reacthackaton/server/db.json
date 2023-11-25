@@ -1,11 +1,3 @@
 {
-  "rotas": [
-    {
-      "partida": "IVATE",
-      "chegada": "UMUARAMA",
-      "detalhes": "as 16hr",
-      "diapartida": "Sabado - Feira",
-      "id": 1
-    }
-  ]
+  "rotas": []
 }

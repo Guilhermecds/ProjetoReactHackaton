@@ -15,4 +15,4 @@ width: 100%;
 export const Label = styled.label`
 color: #333;
 
-`
+`;
