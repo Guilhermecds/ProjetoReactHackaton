@@ -1,13 +1,15 @@
 import { FormEvent, useContext, useEffect, useRef, useState } from 'react'
 import Modal from 'react-modal'
-import { Button, FormContainer, FormGroup, Input, InputDate, Label } from './style';
+import { Button, FormContainer, FormGroup, Input, InputDate, Label, Option, Select, Textarea } from './style';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import { RotasContext } from '../contexts/rotaContext';
 
 
 interface PropsModal {
     modalVisible: boolean;
     fecharModal: () => void;
-    // editarTarefa: (data: any) => void;
+    // editarRota: (data: any) => void;
 }
 
 export function CustomModal(props: PropsModal) {
@@ -15,6 +17,22 @@ export function CustomModal(props: PropsModal) {
     const [partida, setPartida] = useState('')
     const [chegada, setChegada] = useState('')
     const [detalhes, setDetalhes] = useState('')
+    const [diapartida, setDiapartida] = useState('')
+    const { inserir, atualizar, funEditarRotas, funEditarRotasDefault, editarRota } = useContext(RotasContext)
+
+
+
+    useEffect(() => {
+        if (editarRota.editar) {
+
+            setPartida(editarRota.rotas?.partida ? editarRota.rotas.partida : '')
+            setChegada(editarRota.rotas?.chegada ? editarRota.rotas.chegada : '')
+            setDetalhes(editarRota.rotas?.detalhes ? editarRota.rotas.detalhes : '')
+            setDiapartida(editarRota.rotas?.diapartida ? editarRota.rotas.diapartida : '')
+        }
+
+    }, [editarRota.editar])
+
 
     function limparCamposEFecharModal() {
         props.fecharModal()
@@ -23,25 +41,31 @@ export function CustomModal(props: PropsModal) {
 
     function enviarForm(e: any) {
         e.preventDefault();
-        let objRota = {
-            partida,
-            chegada,
-            detalhes
+
+        if(editarRota.editar && editarRota.rotas){
+
+            let objRota = {
+                ...editarRota.rotas,
+                partida,
+                chegada,
+                detalhes,
+                diapartida
+            }
+            atualizar(objRota)
+            limparCamposEFecharModal()
+
+        }else{
+            let objRota = {
+                partida,
+                chegada,
+                detalhes,
+                diapartida
+            }
+            inserir(objRota)
+            limparCamposEFecharModal()
         }
-        inserir(objRota)
     }
 
-    const inserir = (obj: any) => {
-        axios.post('http://localhost:3000/rotas', obj, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then((res) => {
-                limparCamposEFecharModal()
-                window.location.reload()
-            })
-    }
 
 
 
@@ -83,22 +107,39 @@ export function CustomModal(props: PropsModal) {
                         onChange={(e) => setChegada(e.target.value)}
                         required
                     />
+                    <FormGroup>
+                        <Label>Dia de partida</Label>
+                        <Select
+                            value={diapartida}
+                            onChange={(e) => setDiapartida(e.target.value)}
+                        >
+                            <Option value=''></Option>
+                            <Option value='Segunda - Feira'>Segunda - Feira</Option>
+                            <Option value='Terça - Feira'>Terça - Feira</Option>
+                            <Option value='Quarta - Feira'>Quarta - Feira</Option>
+                            <Option value='Quinta - Feira'>Quinta - Feira</Option>
+                            <Option value='Sexta - Feira'>Sexta - Feira</Option>
+                            <Option value='Sabado - Feira'>Sabado - Feira</Option>
+                            <Option value='Domingo - Feira'>Domingo - Feira</Option>
+                        </Select>
+                    </FormGroup>
 
                     <Label>Datlhes da Rota:</Label>
-                    <textarea
-                        placeholder="Cidade Destino"
+                    <Textarea
+                        placeholder="Detalhes das rotas"
                         value={detalhes}
                         onChange={(e) => setDetalhes(e.target.value)}
                         required
                     >
-                        Detalhes
-                    </textarea>
+                    </Textarea>
+
 
                 </FormGroup>
                 <FormGroup>
                     <Button type="submit">Criar Rota</Button>
+
                 </FormGroup>
-                
+
             </FormContainer>
 
         </Modal>

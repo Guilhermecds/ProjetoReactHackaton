@@ -45,6 +45,19 @@ export const CardButtonExcluir = styled.button`
   cursor: pointer;
   font-size: 18px;
   margin-top: 15px;
+  margin-left: 20px;
+  margin-right: 30px;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s; 
+  &:hover {
+    background-color: pink; 
+  }
+  &:active {
+    transform: translateY(2px);
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+  }
 `;
 
 export const CardButton = styled.button`
@@ -75,4 +88,15 @@ export const ListaRotas = styled.div`
   justify-content: center;
 `;
 
-// Adicione outros estilos conforme necessário
+
+
+export const Textarea = styled.textarea`
+  margin-top: 10px;
+  width: 100%;
+  border: 2px solid ;
+  border-radius: 5px;
+  margin: 10px auto;
+  padding: 15p 50px;
+  font-size: 15px;
+  text-align: justify;
+`;

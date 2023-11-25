@@ -109,7 +109,7 @@ export const Input = styled.input`
 
 export const InputDate = styled.input`
   margin-top: 10px;
-  width: 170px;
+  width: 303px;
   padding: 8px;
   margin-left: 5px;
   font-size: 14px;
@@ -133,6 +133,35 @@ export const Button = styled.button`
     
   }
 `;
+
+export const Textarea = styled.textarea`
+  margin-top: 10px;
+  width: 170px;
+  border: 2px solid ;
+  border-radius: 10px;
+  margin: 10px auto;
+  padding: 15px 100px;
+  font-size: 15px;
+  border-radius: 15px;
+  text-align: center;
+`;
+
+export const Select = styled.select`
+  width: 96%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d7d7d7;
+  background-color: #e7e9ee;
+  font-size: 1rem;
+`
+
+export const Option = styled.option`
+  // width: 96%;
+  // padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d7d7d7;
+
+`
 
 // export const Icon = styled(FontAwesomeIcon)`
 //   position: absolute;
