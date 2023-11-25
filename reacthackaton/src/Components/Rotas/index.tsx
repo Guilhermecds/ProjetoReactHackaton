@@ -1,57 +1,89 @@
-/*import React, { useState } from "react";
-import { FormContainer, FormGroup, Label, Input, Button, Icon, InputDate } from './styles';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarker, faUser } from '@fortawesome/free-solid-svg-icons';
-import  './estilo.css'
-
-
-interface PropsRotas {
-    abrirModal: () => void;
-}
-
-
-export const Rotas = (props: PropsRotas) => {
-    return (
-        <h1>aqui vai listar</h1>
-
-    )
-}*/
-
-
+import axios from 'axios';
 import {
   Card,
   CardTitle,
   CardContent,
   CardButton,
-  ListaRotas
+  ListaRotas,
+  CardButtonExcluir
 } from './styles';
+import { FormEvent, useContext, useEffect, useState } from 'react';
+import { CustomModal } from '../CustonModal';
 
 interface PropsRotas {
   abrirModal: () => void;
+
 }
 
+interface RouteData {
+  id: number;
+  partida: string;
+  chegada: string;
+}
+
+
 export const Rotas = (props: PropsRotas) => {
-  // Exemplo de dados de rotas
-  const rotas = [
-    { id: 1, nome: 'Douradina para Umuarama', descricao: 'Rota de Douradina até Umuarama. Desfrute de uma viagem cênica, passando por paisagens encantadoras.' },
-    { id: 2, nome: 'São paulo para Argentina', descricao: 'Rota de São Paulo até Jaco. Desfrute de uma viagem cênica, passando por paisagens encantadoras.' },
-    { id: 2, nome: 'São paulo para Argentina', descricao: 'Rota de São Paulo até Jaco. Desfrute de uma viagem cênica, passando por paisagens encantadoras.' },
-    { id: 2, nome: 'São paulo para Argentina', descricao: 'Rota de São Paulo até Jaco. Desfrute de uma viagem cênica, passando por paisagens encantadoras.' },
-    // Adicione mais rotas conforme necessário
-  ];
+
+  const [data, setData] = useState<RouteData[]>([]);;
+
+  useEffect(() => {
+    listar();
+  }, [])
+
+  function deletaRota(e: FormEvent, id: any) {
+    e.preventDefault();
+    if (data) {
+      deletar(id)
+    }
+  }
+
+
+  const listar = () => {
+    axios.get('http://localhost:3000/rotas')
+      .then((res) => {
+        setData(res.data)
+      })
+  }
+
+
+  const deletar = (id: any) => {
+    axios.delete('http://localhost:3000/rotas/' + id)
+      .then((res) => {
+        window.location.reload()
+      })
+  }
 
   return (
+
+
+
+
     <div>
-      
+
       <ListaRotas>
-        {rotas.map(rota => (
-          <Card key={rota.id}>
-            <CardTitle>{rota.nome}</CardTitle>
-            <CardContent>{rota.descricao}</CardContent>
-            <CardButton onClick={props.abrirModal}>
+
+        {data.map(data => (
+
+          <Card key={data.id}>
+            <CardTitle>{data.partida}</CardTitle>
+            <CardContent>{data.chegada}</CardContent>
+
+            <CardButton>
               Ver Detalhes
             </CardButton>
+
+            <CardButtonExcluir onClick={(e) => deletaRota(e, data.id)}>
+              Deletar
+            </CardButtonExcluir>
+
+            <CardButton
+              onClick={() => {
+                props.abrirModal();
+              }}
+            >
+              Editar
+            </CardButton>
+
           </Card>
         ))}
       </ListaRotas>

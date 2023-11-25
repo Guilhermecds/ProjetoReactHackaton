@@ -6,6 +6,7 @@ import { Rotas } from './Components/Rotas'
 import { Footer } from './Components/Footer'
 import { CustomModal } from './Components/CustonModal'
 import { GlobalStyle } from './global'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
 
@@ -28,10 +29,9 @@ function App() {
       <Header 
         abrirModal={abrirModal}
       />
-
           <Rotas
              abrirModal={abrirModal}
-          />
+           />
 
           <CustomModal 
             modalVisible={isVisibleModal}

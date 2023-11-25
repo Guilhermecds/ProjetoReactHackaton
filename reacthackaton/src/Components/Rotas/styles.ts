@@ -27,39 +27,46 @@ export const Card = styled.div`
 
 export const CardTitle = styled.h2`
   color: #333;
-  font-size: 20px; /* Aumentando o tamanho da fonte do título */
+  font-size: 20px; 
 `;
 
 export const CardContent = styled.p`
   color: #555;
-  font-size: 18px; /* Aumentando o tamanho da fonte do conteúdo */
+  font-size: 18px; 
+`;
+
+// exportando variavel com nome que eu escolhi de uma tag html button
+export const CardButtonExcluir = styled.button`
+  background-color: red;
+  color: #fff;
+  padding: 12px 24px; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 15px;
 `;
 
 export const CardButton = styled.button`
-background-color: #3498db;
-color: #fff;
-padding: 12px 24px; /* Ajustando o espaçamento interno do botão */
-border: none;
-border-radius: 5px;
-cursor: pointer;
-font-size: 18px; /* Aumentando o tamanho da fonte do botão */
-margin-top: 15px; /* Aumentando a margem superior do botão */
-transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Adicionando uma transição suave para mudanças de cor e transformação */
-
-&:hover {
-  background-color: #2980b9; /* Mudando a cor de fundo ao passar o mouse */
-}
-
-&:active {
-  transform: translateY(2px); /* Movendo o botão para baixo ao clicar */
-}
-
-&:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5); /* Adicionando um contorno de foco */
-}
-
-  
+  background-color: #3498db;
+  color: #fff;
+  padding: 12px 24px; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 15px;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s; 
+  &:hover {
+    background-color: #2980b9; 
+  }
+  &:active {
+    transform: translateY(2px);
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+  }
 `;
 
 export const ListaRotas = styled.div`
