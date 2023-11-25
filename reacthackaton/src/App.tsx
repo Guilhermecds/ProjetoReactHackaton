@@ -9,6 +9,7 @@ import { GlobalStyle } from './global'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
 import { RotasProvider } from './Components/contexts/rotaContext'
+import { ModalUsuario } from './Components/ModalUsuario'
 
 function App() {
 
@@ -24,6 +25,16 @@ function App() {
     setIsVisibleModal(false)
   }
 
+  const [isVisibleModalUsuario, setIsVisibleModalUsuario] = useState(false)
+
+  function abrirModalUsuario() {
+    setIsVisibleModalUsuario(true)
+  }
+
+  function fecharModalUsuario() {
+    setIsVisibleModalUsuario(false)
+  }
+
   return (
     <>
       <RotasProvider>
@@ -31,6 +42,7 @@ function App() {
         <GlobalStyle />
         <Header
           abrirModal={abrirModal}
+          abrirModalUsuario={abrirModalUsuario}
         />
         <Rotas
           abrirModal={abrirModal}
@@ -39,6 +51,10 @@ function App() {
         <CustomModal
           modalVisible={isVisibleModal}
           fecharModal={fecharModal}
+        />
+        <ModalUsuario
+          modalVisible={isVisibleModalUsuario}
+          fecharModal={fecharModalUsuario}
         />
         <ToastContainer />
         <Footer />
