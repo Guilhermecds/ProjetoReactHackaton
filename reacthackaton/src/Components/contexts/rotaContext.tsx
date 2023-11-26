@@ -30,7 +30,6 @@ export const RotasContext = createContext(
 interface PropsRotasProvider {
     children: ReactNode
 }
-// export function TarefasProvider(props: PropsTarefaProvider) {
 export function RotasProvider({ children }: PropsRotasProvider) {
 
     // const [rotas, setRotas] = useState([])
