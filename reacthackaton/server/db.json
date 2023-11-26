@@ -1,10 +1,10 @@
 {
   "rotas": [],
-  "usuario": [
+  "usuarios": [
     {
-      "nome": "lucas",
-      "usuario": "lucas",
-      "senha": "123",
+      "nome": "bbbbbb",
+      "usuario": "bbbbbbbb",
+      "senha": "bbbbbb",
       "id": 1
     }
   ]

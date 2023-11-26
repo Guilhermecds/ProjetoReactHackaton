@@ -8,7 +8,7 @@ import {
 import { toast } from "react-toastify";
 // import { Loading } from "../components/Loading";
 interface PropsUsuarioContext {
-    usuario: any;
+    usuarios: any;
     inserirUsu: any;
     deletar: any;
     funEditarUsuario: any;
@@ -33,14 +33,14 @@ interface PropsUsuarioProvider {
 }
 export function UsuarioProvider({ children }: PropsUsuarioProvider) {
 
-    const [usuario, setUsuario] = useState<RouteData[]>([]);
+    const [usuarios, setUsuario] = useState<RouteData[]>([]);
 
-    const [editarUsuario, setEditarUsuario] = useState<any>({ editar: false, usuario: null })
+    const [editarUsuario, setEditarUsuario] = useState<any>({ editar: false, usuarios: null })
 
 
 
     useEffect(() => {
-        axios.get('http://localhost:3000/usuario')
+        axios.get('http://localhost:3000/usuarios')
             .then((res) => {
                 setUsuario(res.data)
             })
@@ -50,7 +50,7 @@ export function UsuarioProvider({ children }: PropsUsuarioProvider) {
 
      const inserirUsu = (obj: any) => {
        
-        axios.post('http://localhost:3000/usuario', obj, {
+        axios.post('http://localhost:3000/usuarios', obj, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -63,9 +63,9 @@ export function UsuarioProvider({ children }: PropsUsuarioProvider) {
 
 
     const deletar = (id: any) => {
-        axios.delete('http://localhost:3000/usuario/' + id)
+        axios.delete('http://localhost:3000/usuarios/' + id)
             .then((res) => {
-                axios.get('http://localhost:3000/usuario')
+                axios.get('http://localhost:3000/usuarios')
                     .then((res) => {
                         setUsuario(res.data)
                         toast.success("Deletado com Sucesso!");
@@ -75,15 +75,15 @@ export function UsuarioProvider({ children }: PropsUsuarioProvider) {
 
 
     const atualizar = (obj: any) => {
-        console.log('aa')
+        console.log(obj)
         var id = obj.id
-        axios.put('http://localhost:3000/usuario/' + id, obj, {
+        axios.put('http://localhost:3000/usuarios/' + id, obj, {
             headers: {
                 'Content-Type': 'application/json'
             }
         })
             .then((res) => {
-                axios.get('http://localhost:3000/usuario')
+                axios.get('http://localhost:3000/usuarios')
                     .then((res) => {
                         setUsuario(res.data)
                         toast.success("Editado com Sucesso!");
@@ -93,7 +93,7 @@ export function UsuarioProvider({ children }: PropsUsuarioProvider) {
 
 
     function funEditarUsuarioDefault() {
-        setEditarUsuario({ editar: false, usuario: null })
+        setEditarUsuario({ editar: false, usuarios: null })
     }
 
 
@@ -104,7 +104,7 @@ export function UsuarioProvider({ children }: PropsUsuarioProvider) {
 
     return (
         <UsuarioContext.Provider value={{
-            usuario,
+            usuarios,
             inserirUsu,
             deletar,
             funEditarUsuario,
