@@ -2,13 +2,15 @@ import {
     BotaoEsquerdo,
     BotaoDireito,
     Cabecalho,
-    Titulo
+    Titulo,
+    BotaoManutUsuario
 } from './styles';
 
 
 interface PropsHeader {
     abrirModal: () => void;
     abrirModalUsuario: () => void; 
+    abrirModalManut: () => void; 
 }
 
 
@@ -31,6 +33,10 @@ export const Header = (props: PropsHeader) => {
             <BotaoEsquerdo onClick={props.abrirModalUsuario}>
               Cadastrar Usuario
             </BotaoEsquerdo>
+
+            <BotaoManutUsuario onClick={props.abrirModalManut}>
+                Manutençâo de Usuario
+            </BotaoManutUsuario>
 
         </Cabecalho>
 

@@ -2,7 +2,6 @@ import Modal from 'react-modal'
 import { FormGroup, Button, FormContainer, Textarea, Input, Label } from './style';
 import { useContext, useState, useEffect } from 'react';
 import { UsuarioContext } from '../contexts/usuarioContext';
-
 interface PropsModal {
     modalVisible: boolean;
     fecharModal: () => void;
@@ -18,32 +17,49 @@ export function ModalUsuario(props: PropsModal) {
     const { inserirUsu, atualizar, funEditarUsuario, funEditarUsuarioDefault, editarUsuario } = useContext(UsuarioContext)
 
     function limparCamposEFecharModal() {
+        setNome('')
+        setUsuario('')
+        setSenha('')
+        funEditarUsuarioDefault();
         props.fecharModal()
     }
+
+
+    useEffect(() => {
+        console.log(editarUsuario)
+        if (editarUsuario.editar) {
+
+            setNome(editarUsuario.usuarios?.nome ? editarUsuario.usuarios.nome : '')
+            setSenha(editarUsuario.usuarios?.senha ? editarUsuario.usuarios.senha : '')
+            setUsuario(editarUsuario.usuarios?.usuario ? editarUsuario.usuarios.usuario : '')
+
+        }
+
+    }, [editarUsuario.editar])
 
     function enviarForm(e: any) {
         e.preventDefault();
 
-        // if(editarUsuario.editar && editarUsuario.usuario){
+        if (editarUsuario.editar && editarUsuario.usuarios) {
 
-        //     let objUsuario = {
-        //         ...editarUsuario.usuario,
-        //         nome,
-        //         usuario,
-        //         senha
-        //     }
-        //     atualizar(objUsuario)
-        //     limparCamposEFecharModal()
+            let objUsuario = {
+                ...editarUsuario.usuarios,
+                nome,
+                usuario,
+                senha
+            }
+            limparCamposEFecharModal()
+            atualizar(objUsuario)
 
-        // }else{
-        let objUsuario = {
-            nome,
-            usuario,
-            senha
+        } else {
+            let objUsuario = {
+                nome,
+                usuario,
+                senha
+            }
+            limparCamposEFecharModal()
+            inserirUsu(objUsuario)
         }
-        inserirUsu(objUsuario)
-        limparCamposEFecharModal()
-        // }
     }
 
 
@@ -51,6 +67,7 @@ export function ModalUsuario(props: PropsModal) {
 
     return (
         <Modal
+            id='modalusuario'
             isOpen={props.modalVisible}
             overlayClassName="react-modal-overlay"
             className="react-modal-content"
@@ -64,6 +81,9 @@ export function ModalUsuario(props: PropsModal) {
                 X
             </button>
 
+            <h2
+                style={{textAlign: 'center'}}
+            >Cadastrar Usuario</h2>
 
 
             <FormContainer
@@ -84,7 +104,7 @@ export function ModalUsuario(props: PropsModal) {
                     <Label>Usuario:</Label>
                     <Input
                         type="text"
-                        placeholder="Cidade Destino"
+                        placeholder="Usuario"
                         value={usuario}
                         onChange={(e) => setUsuario(e.target.value)}
                         required

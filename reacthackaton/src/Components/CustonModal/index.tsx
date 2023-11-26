@@ -35,6 +35,11 @@ export function CustomModal(props: PropsModal) {
 
 
     function limparCamposEFecharModal() {
+        setPartida('')
+        setChegada('')
+        setDetalhes('')
+        setDiapartida('')
+        funEditarRotasDefault();
         props.fecharModal()
     }
 
@@ -42,7 +47,7 @@ export function CustomModal(props: PropsModal) {
     function enviarForm(e: any) {
         e.preventDefault();
 
-        if(editarRota.editar && editarRota.rotas){
+        if (editarRota.editar && editarRota.rotas) {
 
             let objRota = {
                 ...editarRota.rotas,
@@ -54,7 +59,7 @@ export function CustomModal(props: PropsModal) {
             atualizar(objRota)
             limparCamposEFecharModal()
 
-        }else{
+        } else {
             let objRota = {
                 partida,
                 chegada,
@@ -83,6 +88,11 @@ export function CustomModal(props: PropsModal) {
             >
                 X
             </button>
+
+            <h2
+                style={{ textAlign: 'center' }}
+            >Cadastrar de Rotas</h2>
+
 
             <FormContainer
                 onSubmit={(e) => enviarForm(e)}
