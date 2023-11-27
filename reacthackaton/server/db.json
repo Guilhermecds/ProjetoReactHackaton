@@ -1,60 +1,11 @@
 {
-  "rotas": [
-    {
-      "partida": "aaaaaaaaaaaaa",
-      "chegada": "aaaaaaaaaa",
-      "detalhes": "aaaaaaaaaaaaaaaa",
-      "diapartida": "Terça - Feira",
-      "id": 7
-    },
-    {
-      "partida": "aaaaaaaaaaaaa",
-      "chegada": "aaaaaaa",
-      "detalhes": "aaaaaaaaaaaa",
-      "diapartida": "Sexta - Feira",
-      "id": 32
-    },
-    {
-      "partida": "aaaaaaaaa",
-      "chegada": "aaaaaaaa",
-      "detalhes": "aaaaaaaaaaaaa",
-      "diapartida": "Quarta - Feira",
-      "id": 33
-    },
-    {
-      "partida": "aaaaaaaaaaa",
-      "chegada": "aaaaaa",
-      "detalhes": "aaaaaaaaaaaaa",
-      "diapartida": "Terça - Feira",
-      "id": 34
-    },
-    {
-      "partida": "aaaaaaaaaa",
-      "chegada": "aaaaaaaaa",
-      "detalhes": "aaaaaaaaaa",
-      "diapartida": "Terça - Feira",
-      "id": 35
-    },
-    {
-      "partida": "aaaaaaaaaaaaaa",
-      "chegada": "aaaaaaaaaa",
-      "detalhes": "aaaaaaaaaaaaa",
-      "diapartida": "Quarta - Feira",
-      "id": 36
-    }
-  ],
+  "rotas": [],
   "usuarios": [
     {
-      "nome": "aaaaaaaaaaaaaaaaaaaaaaa",
-      "usuario": "aaaaaaaaaa",
-      "senha": "aaaaaaaaaaaaaaaaaaaa",
+      "nome": "s",
+      "usuario": "s",
+      "senha": "s",
       "id": 1
-    },
-    {
-      "nome": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "usuario": "aaaaaaaaaa",
-      "senha": "aaaaaaaaaaaaaaaaaaaa",
-      "id": 2
     }
   ]
 }

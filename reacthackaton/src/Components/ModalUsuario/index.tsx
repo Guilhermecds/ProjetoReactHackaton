@@ -26,7 +26,6 @@ export function ModalUsuario(props: PropsModal) {
 
 
     useEffect(() => {
-        console.log(editarUsuario)
         if (editarUsuario.editar) {
 
             setNome(editarUsuario.usuarios?.nome ? editarUsuario.usuarios.nome : '')
