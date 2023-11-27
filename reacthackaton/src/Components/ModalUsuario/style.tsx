@@ -71,8 +71,6 @@ export const FormContainers = styled.form`
 
 `;
 
-
-// Criando os componentes estilizados
 export const FormContainer = styled.form`
   max-width: 400px;
   margin: 20px auto;
@@ -106,7 +104,6 @@ export const Input = styled.input`
   border-radius: 10px;
 `;
 
-
 export const InputDate = styled.input`
   margin-top: 10px;
   width: 303px;
@@ -116,7 +113,6 @@ export const InputDate = styled.input`
   border: 2px solid ;
   border-radius: 10px;
 `;
-
 
 export const Button = styled.button`
   color: #fff;
@@ -160,11 +156,4 @@ export const Option = styled.option`
   border: 1px solid #d7d7d7;
 
 `
-
-// export const Icon = styled(FontAwesomeIcon)`
-//   position: absolute;
-//   top: 242px;
-//   color: black;
-//   margin-left: 15px;
-// `;
 

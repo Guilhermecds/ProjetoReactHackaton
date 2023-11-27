@@ -2,7 +2,6 @@ import React from 'react'
 import Modal from 'react-modal'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
-import './index.css'
 import { ToastContainer } from 'react-toastify'
 
 
