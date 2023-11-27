@@ -39,23 +39,27 @@ export function RotasProvider({ children }: PropsRotasProvider) {
 
     const [editarRota, setEditarRota] = useState<any>({ editar: false, rotas: null })
 
+    const [loadingVisible, setLoadingVisible] = useState(false);
 
     useEffect(() => {
+        setLoadingVisible(true);
         axios.get('http://localhost:3000/rotas')
             .then((res) => {
+                setLoadingVisible(false)
                 setRotas(res.data)
             })
     }, [])
 
 
-
     const inserir = (obj: any) => {
+        setLoadingVisible(true);
         axios.post('http://localhost:3000/rotas', obj, {
             headers: {
                 'Content-Type': 'application/json'
             }
         })
             .then((res) => {
+                setLoadingVisible(false)
                 setRotas((prevRotas) => [...prevRotas, res.data]);
                 toast.success("Rota Cadastrada com Sucesso!");
             })
@@ -63,10 +67,12 @@ export function RotasProvider({ children }: PropsRotasProvider) {
 
 
     const deletar = (id: any) => {
+        setLoadingVisible(true);
         axios.delete('http://localhost:3000/rotas/' + id)
             .then((res) => {
                 axios.get('http://localhost:3000/rotas')
                     .then((res) => {
+                        setLoadingVisible(false)
                         setRotas(res.data)
                         toast.success("Deletado com Sucesso!");
                     })
@@ -76,6 +82,7 @@ export function RotasProvider({ children }: PropsRotasProvider) {
 
     const atualizar = (obj: any) => {
         var id = obj.id
+        setLoadingVisible(true)
         axios.put('http://localhost:3000/rotas/' + id, obj, {
             headers: {
                 'Content-Type': 'application/json'
@@ -84,12 +91,12 @@ export function RotasProvider({ children }: PropsRotasProvider) {
             .then((res) => {
                 axios.get('http://localhost:3000/rotas')
                     .then((res) => {
+                        setLoadingVisible(false)
                         setRotas(res.data)
                         toast.success("Editado com Sucesso!");
                     })
             })
     }
-
 
     function funEditarRotasDefault() {
         setEditarRota({ editar: false, rotas: null })
@@ -111,7 +118,7 @@ export function RotasProvider({ children }: PropsRotasProvider) {
             atualizar,
             editarRota
         }}>
-            <Loading visible={false} />
+        <Loading visible={loadingVisible} />
             {children}
         </RotasContext.Provider>
     )

@@ -6,6 +6,7 @@ import {
     useEffect
 } from "react";
 import { toast } from "react-toastify";
+import { Loading } from "../Loading";
 // import { Loading } from "../components/Loading";
 interface PropsUsuarioContext {
     usuarios: any;
@@ -34,28 +35,30 @@ interface PropsUsuarioProvider {
 export function UsuarioProvider({ children }: PropsUsuarioProvider) {
 
     const [usuarios, setUsuario] = useState<RouteData[]>([]);
-
     const [editarUsuario, setEditarUsuario] = useState<any>({ editar: false, usuarios: null })
-
+    const [loadingVisible, setLoadingVisible] = useState(false);
 
 
     useEffect(() => {
+        setLoadingVisible(true);
         axios.get('http://localhost:3000/usuarios')
             .then((res) => {
+                setLoadingVisible(false)
                 setUsuario(res.data)
             })
     }, [])
 
 
 
-     const inserirUsu = (obj: any) => {
-       
+    const inserirUsu = (obj: any) => {
+        setLoadingVisible(true);
         axios.post('http://localhost:3000/usuarios', obj, {
             headers: {
                 'Content-Type': 'application/json'
             }
         })
             .then((res) => {
+                setLoadingVisible(false)
                 setUsuario((prevUsuario) => [...prevUsuario, res.data]);
                 toast.success("Usuario Cadastrada com Sucesso!");
             })
@@ -63,10 +66,12 @@ export function UsuarioProvider({ children }: PropsUsuarioProvider) {
 
 
     const deletar = (id: any) => {
+        setLoadingVisible(true);
         axios.delete('http://localhost:3000/usuarios/' + id)
             .then((res) => {
                 axios.get('http://localhost:3000/usuarios')
                     .then((res) => {
+                        setLoadingVisible(false)
                         setUsuario(res.data)
                         toast.success("Deletado com Sucesso!");
                     })
@@ -75,8 +80,8 @@ export function UsuarioProvider({ children }: PropsUsuarioProvider) {
 
 
     const atualizar = (obj: any) => {
-        console.log(obj)
         var id = obj.id
+        setLoadingVisible(true);
         axios.put('http://localhost:3000/usuarios/' + id, obj, {
             headers: {
                 'Content-Type': 'application/json'
@@ -85,6 +90,7 @@ export function UsuarioProvider({ children }: PropsUsuarioProvider) {
             .then((res) => {
                 axios.get('http://localhost:3000/usuarios')
                     .then((res) => {
+                        setLoadingVisible(false)
                         setUsuario(res.data)
                         toast.success("Editado com Sucesso!");
                     })
@@ -112,8 +118,8 @@ export function UsuarioProvider({ children }: PropsUsuarioProvider) {
             atualizar,
             editarUsuario
         }}>
+            <Loading visible={loadingVisible} />
             {children}
         </UsuarioContext.Provider>
     )
 }
-{/* <Loading visible={false} /> */ }
