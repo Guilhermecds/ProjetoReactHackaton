@@ -49,7 +49,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     .react-modal-content{
         max-width:100%;
-        max-width: 576px;
+        max-width: 1000px;
         background: var(--background-modal);
         padding: 3rem;
         position: relative;

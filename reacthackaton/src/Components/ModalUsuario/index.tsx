@@ -92,6 +92,7 @@ export function ModalUsuario(props: PropsModal) {
                 <FormGroup>
                     <Label>Qual seu nome:</Label>
                     <Input
+                        maxLength={30} 
                         type="text"
                         placeholder="Nome"
                         value={nome}
@@ -103,6 +104,7 @@ export function ModalUsuario(props: PropsModal) {
                 <FormGroup>
                     <Label>Usuario:</Label>
                     <Input
+                        maxLength={15} 
                         type="text"
                         placeholder="Usuario"
                         value={usuario}
@@ -112,7 +114,9 @@ export function ModalUsuario(props: PropsModal) {
 
                     <Label>Senha:</Label>
                     <Input
+                        maxLength={20} 
                         placeholder="Senha"
+                        type='password'
                         value={senha}
                         onChange={(e) => setSenha(e.target.value)}
                         required
