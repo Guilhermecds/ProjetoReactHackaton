@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-// Estilize os componentes conforme necessário
-
 export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
@@ -21,7 +19,7 @@ export const Td = styled.td`
 `;
 
 export const EditButton = styled.button`
-  background-color: #4caf50;
+  background-color: #3498db;
   color: white;
   padding: 8px;
   border: none;

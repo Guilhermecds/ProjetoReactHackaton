@@ -6,6 +6,8 @@ import {
     useEffect
 } from "react";
 import { toast } from "react-toastify";
+import { Loading } from "../Loading";
+
 // import { Loading } from "../components/Loading";
 interface PropsRotasContext {
     rotas: any;
@@ -109,6 +111,7 @@ export function RotasProvider({ children }: PropsRotasProvider) {
             atualizar,
             editarRota
         }}>
+            <Loading visible={false} />
             {children}
         </RotasContext.Provider>
     )

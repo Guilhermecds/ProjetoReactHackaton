@@ -5,7 +5,6 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import { RotasContext } from '../contexts/rotaContext';
 
-
 interface PropsModal {
     modalVisible: boolean;
     fecharModal: () => void;
@@ -13,7 +12,7 @@ interface PropsModal {
 }
 
 export function CustomModal(props: PropsModal) {
-
+    
     const [partida, setPartida] = useState('')
     const [chegada, setChegada] = useState('')
     const [detalhes, setDetalhes] = useState('')
@@ -70,10 +69,7 @@ export function CustomModal(props: PropsModal) {
             limparCamposEFecharModal()
         }
     }
-
-
-
-
+  
     return (
         <Modal
             isOpen={props.modalVisible}
@@ -92,7 +88,6 @@ export function CustomModal(props: PropsModal) {
             <h2
                 style={{ textAlign: 'center' }}
             >Cadastrar de Rotas</h2>
-
 
             <FormContainer
                 onSubmit={(e) => enviarForm(e)}
@@ -122,6 +117,7 @@ export function CustomModal(props: PropsModal) {
                         <Select
                             value={diapartida}
                             onChange={(e) => setDiapartida(e.target.value)}
+                            
                         >
                             <Option value=''></Option>
                             <Option value='Segunda - Feira'>Segunda - Feira</Option>
@@ -147,7 +143,7 @@ export function CustomModal(props: PropsModal) {
                 </FormGroup>
                 <FormGroup>
                     <Button type="submit">Criar Rota</Button>
-
+                    
                 </FormGroup>
 
             </FormContainer>

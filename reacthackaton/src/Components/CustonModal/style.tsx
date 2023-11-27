@@ -71,8 +71,6 @@ export const FormContainers = styled.form`
 
 `;
 
-
-// Criando os componentes estilizados
 export const FormContainer = styled.form`
   max-width: 400px;
   margin: 20px auto;
@@ -161,10 +159,5 @@ export const Option = styled.option`
 
 `
 
-// export const Icon = styled(FontAwesomeIcon)`
-//   position: absolute;
-//   top: 242px;
-//   color: black;
-//   margin-left: 15px;
-// `;
+
 

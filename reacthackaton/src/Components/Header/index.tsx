@@ -5,7 +5,7 @@ import {
     Titulo,
     BotaoManutUsuario
 } from './styles';
-
+import transportePublicoImage from '../../../public/transporte_publico.png';
 
 interface PropsHeader {
     abrirModal: () => void;
@@ -15,19 +15,23 @@ interface PropsHeader {
 
 
 export const Header = (props: PropsHeader) => {
+    
     return (
 
         <Cabecalho>
 
-            <div>
-
+            <div >
                 <h1>Transporte publico</h1>
-                
+                <img src={transportePublicoImage} alt="busao" style={{
+                       width: '150px',  
+                       height: '150px', 
+                       marginLeft: '10px',
+                    }}/>
             </div>
             
 
             <BotaoDireito onClick={props.abrirModal}>
-              Nova rota
+              Nova Rota
             </BotaoDireito>
 
             <BotaoEsquerdo onClick={props.abrirModalUsuario}>
@@ -37,7 +41,7 @@ export const Header = (props: PropsHeader) => {
             <BotaoManutUsuario onClick={props.abrirModalManut}>
                 Manutençâo de Usuario
             </BotaoManutUsuario>
-
+            
         </Cabecalho>
 
 

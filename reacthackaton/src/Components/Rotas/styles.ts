@@ -1,25 +1,11 @@
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import styled from 'styled-components';
 
-// // Criando os componentes estilizados
-// export const FormContainer = styled.form`
-//   max-width: 400px;
-//   margin: 20px auto;
-//   padding: 20px;
-//   border: 1px solid #ccc;
-//   border-radius: 5px;
-//   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-//   background-color: #fff
-// `
-
-// RotasStyles.js
 import styled from 'styled-components';
 
 export const Card = styled.div`
   border: 1px solid #ddd;
   border-radius: 8px;
-  margin: 10px;
-  padding: 20px; /* Aumentando o espaço interno para tornar o card maior */
+  margin: 15px;
+  padding: 30px 50px; /* Aumentando o espaço interno para tornar o card maior */
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 300px; /* Definindo uma largura fixa para os cards (ajuste conforme necessário) */
@@ -35,7 +21,6 @@ export const CardContent = styled.p`
   font-size: 18px; 
 `;
 
-// exportando variavel com nome que eu escolhi de uma tag html button
 export const CardButtonExcluir = styled.button`
   background-color: red;
   color: #fff;
@@ -88,12 +73,9 @@ export const ListaRotas = styled.div`
   justify-content: center;
 `;
 
-
-
 export const Textarea = styled.textarea`
   margin-top: 10px;
   width: 100%;
-  border: 2px solid ;
   border-radius: 5px;
   margin: 10px auto;
   padding: 15p 50px;

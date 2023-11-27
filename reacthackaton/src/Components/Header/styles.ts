@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 
 export const BotaoEsquerdo = styled.button`
-  background-color: #3498db; 
+  background-color: #00796B; 
   color: #fff; 
   padding: 10px 30px; 
   font-size: 16px;
@@ -11,16 +11,16 @@ export const BotaoEsquerdo = styled.button`
   cursor: pointer;
   transition: background-color 0.3s ease; 
   position: absolute;
-  top: 10px; 
+  top: 100px; 
   left: 70px;
 
   &:hover {
-    background-color: #2980b9;
+    background-color: #ff6600;
   }
 `;
 
 export const BotaoDireito = styled.button`
-  background-color: #ff9900; 
+  background-color: #00796B; 
   color: #fff; 
   padding: 10px 30px; 
   font-size: 16px;
@@ -29,8 +29,9 @@ export const BotaoDireito = styled.button`
   cursor: pointer;
   transition: background-color 0.3s ease; 
   position: absolute;
-  top: 10px; 
+  top: 100px; 
   right: 70px;
+  
 
   &:hover {
     background-color: #ff6600;
@@ -49,7 +50,7 @@ export const Titulo = styled.h1`
 `;
 
 export const BotaoManutUsuario = styled.button`
-  background-color: pink; 
+  background-color: #00796B; 
   color: #fff; 
   padding: 10px 30px; 
   font-size: 16px;
@@ -58,8 +59,11 @@ export const BotaoManutUsuario = styled.button`
   cursor: pointer;
   transition: background-color 0.3s ease; 
   position: absolute;
+  top: 100px; 
+  left: 300PX;
 
   &:hover {
     background-color: #ff6600;
   }
 `;
+

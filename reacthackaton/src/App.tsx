@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { Header } from './Components/Header'
@@ -12,12 +12,15 @@ import { RotasProvider } from './Components/contexts/rotaContext'
 import { ModalUsuario } from './Components/ModalUsuario'
 import { UsuarioProvider } from './Components/contexts/usuarioContext'
 import { ModalMnutUsuario } from './ModalMnutUsuario'
+import { Loading } from "./Components/Loading";
 
 function App() {
 
 
 
   const [isVisibleModal, setIsVisibleModal] = useState(false)
+  const [loadingVisible, setLoadingVisible] = useState(true);
+
 
   function abrirModal() {
     setIsVisibleModal(true)
@@ -48,10 +51,18 @@ function App() {
     setIsVisibleModalManut(false)
   }
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoadingVisible(false);
+    }, 3000);
 
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
+      {loadingVisible && <Loading visible={true} />}
+
       <RotasProvider>
         <UsuarioProvider>
 
@@ -86,7 +97,6 @@ function App() {
 
         </UsuarioProvider>
       </RotasProvider>
-
     </>
   )
 }

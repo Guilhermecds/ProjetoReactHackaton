@@ -51,12 +51,16 @@ export const Rotas = (props: PropsRotas) => {
           <Card key={rotas.id}>
             <CardContent><b>Cidade de Partida: </b>{rotas.partida}</CardContent>
             <br />
-            <CardContent><b>Cidade de Destino:</b>{rotas.chegada}</CardContent>
+            <CardContent><b>Cidade de Destino: </b>{rotas.chegada}</CardContent>
             <br />
             <CardContent><b>Dia de Partida: </b> {rotas.diapartida}</CardContent>
            
-            <b>Detalhes:  </b>
-            <Textarea value={rotas.detalhes} ></Textarea>
+            <br />
+            <CardContent>
+              <b>Detalhes  </b>
+              <br />
+              <i>{rotas.detalhes}</i>
+            </CardContent>
 
             <CardButtonExcluir onClick={(e) => deletaRota(e, rotas.id)}>
               Deletar
