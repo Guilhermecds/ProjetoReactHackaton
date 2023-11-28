@@ -17,16 +17,13 @@ export const Footer = (props: PropsFooter) => {
 
     useEffect(() => {
         const handleScroll = () => {
-            // Verifica se a pessoa rolou até o final da página
             const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 60;
 
             setShowFooter(isAtBottom);
         };
 
-        // Adiciona um listener para o evento de scroll
         window.addEventListener('scroll', handleScroll);
 
-        // Remove o listener quando o componente é desmontado
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };

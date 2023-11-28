@@ -45,30 +45,34 @@ export function CustomModal(props: PropsModal) {
 
     function enviarForm(e: any) {
         e.preventDefault();
-
-        if (editarRota.editar && editarRota.rotas) {
-
-            let objRota = {
-                ...editarRota.rotas,
-                partida,
-                chegada,
-                detalhes,
-                diapartida
-            }
-            atualizar(objRota)
-            limparCamposEFecharModal()
-
-        } else {
-            let objRota = {
-                partida,
-                chegada,
-                detalhes,
-                diapartida
-            }
-            inserir(objRota)
-            limparCamposEFecharModal()
+      
+        
+        if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/.test(partida) || !/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/.test(chegada)) {
+            toast.warning('Os campos de partida e destino não podem conter números ou caracteres especiais.');
+            return;
         }
-    }
+      
+        if (editarRota.editar && editarRota.rotas) {
+          let objRota = {
+            ...editarRota.rotas,
+            partida,
+            chegada,
+            detalhes,
+            diapartida
+          };
+          atualizar(objRota);
+          limparCamposEFecharModal();
+        } else {
+          let objRota = {
+            partida,
+            chegada,
+            detalhes,
+            diapartida
+          };
+          inserir(objRota);
+          limparCamposEFecharModal();
+        }
+      }
   
     return (
         <Modal
