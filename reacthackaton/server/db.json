@@ -1,10 +1,25 @@
 {
-  "rotas": [],
+  "rotas": [
+    {
+      "partida": "aaaaaaaaaaa",
+      "chegada": "aaaaaaa",
+      "detalhes": "aaaaaaaaaaaaaaaaaaaa",
+      "diapartida": "Terça - Feira",
+      "id": 1
+    },
+    {
+      "partida": "aaaaaaaaaaaaaaa",
+      "chegada": "aaaaaaaaaaaa",
+      "detalhes": "aaaaaaaaaaaaaa",
+      "diapartida": "Quarta - Feira",
+      "id": 4
+    }
+  ],
   "usuarios": [
     {
-      "nome": "s",
-      "usuario": "s",
-      "senha": "s",
+      "nome": "João",
+      "usuario": "aaaaaaaa",
+      "senha": "aaaaaaaaaa",
       "id": 1
     }
   ]

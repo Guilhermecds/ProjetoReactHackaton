@@ -2,6 +2,8 @@ import Modal from 'react-modal'
 import { FormGroup, Button, FormContainer, Textarea, Input, Label } from './style';
 import { useContext, useState, useEffect } from 'react';
 import { UsuarioContext } from '../contexts/usuarioContext';
+import { toast } from "react-toastify";
+
 interface PropsModal {
     modalVisible: boolean;
     fecharModal: () => void;
@@ -36,30 +38,34 @@ export function ModalUsuario(props: PropsModal) {
 
     }, [editarUsuario.editar])
 
-    function enviarForm(e: any) {
+    function enviarForm(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-
-        if (editarUsuario.editar && editarUsuario.usuarios) {
-
-            let objUsuario = {
-                ...editarUsuario.usuarios,
-                nome,
-                usuario,
-                senha
-            }
-            limparCamposEFecharModal()
-            atualizar(objUsuario)
-
-        } else {
-            let objUsuario = {
-                nome,
-                usuario,
-                senha
-            }
-            limparCamposEFecharModal()
-            inserirUsu(objUsuario)
+      
+        if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/.test(nome)) {
+            toast.warning('O nome do usuário não pode conter números ou caracteres especiais.');
+            return;
         }
-    }
+      
+        if (editarUsuario.editar && editarUsuario.usuarios) {
+          let objUsuario = {
+            ...editarUsuario.usuarios,
+            nome,
+            usuario,
+            senha,
+          };
+          limparCamposEFecharModal();
+          atualizar(objUsuario);
+        } else {
+      
+          let objUsuario = {
+            nome,
+            usuario,
+            senha,
+          };
+          limparCamposEFecharModal();
+          inserirUsu(objUsuario);
+        }
+      }
 
 
 
